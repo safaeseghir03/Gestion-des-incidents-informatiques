@@ -1,0 +1,83 @@
+<!-- 
+
+
+ 
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+  <button mat-icon-button >
+    <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+  </button>
+  <span>TicketsApp</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+      <mat-nav-list>
+          <a mat-list-item (click)="goToDeprtement()">Departement</a>
+          <a mat-list-item>Home</a>
+          <a mat-list-item>Home</a>
+          <a mat-list-item>Home</a>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <div style="height:88vh;">
+        <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <div class="row">
+                        <img src="./assets/images/taqa-morocco-logo.png" class="logo">
+                    </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                        <img src="https://i.imgur.com/uNGdWHi.png" class="image">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+              <form [formGroup]="loginForm"  (ngSubmit)="submit()">
+                <div class="card2 card border-0 px-4 py-5">
+                    
+                  
+                    <div class="row px-3">
+                     
+                        <mat-form-field appearance="fill">
+                          <mat-label>Adresse email</mat-label>
+                          <input matInput placeholder="pat@example.com"formControlName="email"formControlName="email"  required>
+                          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+   
+                      </div>
+                    <div class="row px-3">
+                     
+                        <mat-form-field appearance="fill">
+                          <mat-label>Mot de passe</mat-label>
+                          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          </button>
+                        </mat-form-field>
+                   
+                    <div class="row mb-3 px-3">
+                        <button type="submit" class="btn btn-blue text-center"[disabled]="!loginForm.valid">se connecter</button>
+                    </div><br><br><br><br>
+                    <a class="sign-up-link"role="button" (click)="forgotPassword()" >Mot de passe oublié !</a>
+                </div>
+            </div>
+      </form>  </div>
+        <div class="bg-blue py-4">
+            
+        </div>
+    </div>
+  </div>

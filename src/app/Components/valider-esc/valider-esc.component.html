@@ -1,0 +1,83 @@
+<h1 mat-dialog-title> escalader le ticket </h1>
+<form [formGroup]="TicketForm">
+<table>
+
+<tr>
+    <td>
+        <mat-form-field appearance="standard">
+            <mat-label>Entrez le Titre </mat-label>
+            <input formControlName="Titre" matInput placeholder="Titre">
+            
+            
+          </mat-form-field></td>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrez le lieu</mat-label>
+        <input formControlName="lieu" matInput placeholder="lieu">
+      
+   
+      </mat-form-field></td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+    </td>
+     
+</tr>
+
+<tr>
+    <td>
+        <mat-form-field appearance="standard">
+            <mat-label>Entrez le type</mat-label>
+            <input formControlName="type" matInput placeholder="type">
+          
+       
+          </mat-form-field></td>
+      
+    <td >
+        <mat-form-field appearance="fill">
+            <mat-label>Assigné à:</mat-label>
+            <mat-select formControlName="idEq" (selectionChange)="technicienS($event.value)" >
+                <div *ngFor="let item of equipeITlist$|async">
+                    <div *ngIf="item.typeEq=='Technicien'">
+                        <div *ngIf="item.etatEq=='Activé'">
+              <mat-option  [value]="item.idEq">{{item.nomEq}} {{item.prenomEq}}</mat-option>
+                </div>  
+                     </div>
+             </div>
+           </mat-select>
+          
+          </mat-form-field>
+    </td>
+    <td>
+        <mat-form-field appearance="standard">
+           
+            <input formControlName="statue" matInput placeholder="statue" value="encours" readonly>
+                
+        </mat-form-field></td>
+   
+</tr>
+<tr>
+    <td>
+        <mat-form-field appearance="fill">
+            <mat-label>priorité</mat-label>
+            <mat-select formControlName="priorite">
+                
+              <mat-option value="Faible">Faible</mat-option>
+              <mat-option value="Moyenne">Moyenne</mat-option>
+              <mat-option value="Haute">Haute</mat-option>
+              <mat-option value="très Haute">très Haute</mat-option>
+           </mat-select>
+           
+          </mat-form-field>
+    </td>
+</tr>
+
+</table>
+
+</form><br><br>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="validerTicket()" [disabled]="!TicketForm.valid"  >valider</button>
+</div>

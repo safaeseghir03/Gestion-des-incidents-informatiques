@@ -1,0 +1,32 @@
+
+ mat-sidenav-container {
+    height: calc(100vh - 65px);
+  }
+  .example-spacer {
+      flex: 1 1 auto;
+    }
+    table {
+      width: 100%;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    th{
+      background-color: gray;
+     
+    }
+    .rech{
+      font-size: 17px;
+      font-weight: bold;
+    }
+    
+    
+  #add{
+      position:absolute;
+      right:3%;
+      float: left;
+  
+    }
+    

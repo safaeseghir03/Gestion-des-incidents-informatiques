@@ -1,0 +1,94 @@
+<div class="container-fluid">
+ 
+  <app-navbar [inputSidenav]="sidenave"></app-navbar>
+ <mat-sidenav-container>
+   <mat-sidenav #sidenave mode="side">
+    <app-sidenav></app-sidenav> 
+   </mat-sidenav>
+   <mat-sidenav-content>
+<app-barre-tick></app-barre-tick>
+
+<h1 style="text-align: center ;color: red;">  Tickets en cours </h1>
+
+<div class="container"><div style="margin-top: 15px;">
+    <mat-form-field  class="rech" appearance="standard">
+      <mat-label>Recherche</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="idTicket" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+          <td mat-cell *matCellDef="let row"> {{row.idTicket}} </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="titre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Titre </th>
+          <td mat-cell *matCellDef="let row"> {{row.titre}} </td>
+        </ng-container>
+
+        
+         <!-- Progress Column -->
+         <ng-container matColumnDef="statue">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Statue </th>
+          <td mat-cell *matCellDef="let row"> {{row.statue}} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="dateHeureCreation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> date et Heure </th>
+          <td mat-cell *matCellDef="let row"> {{row.dateHeureCreation}} </td>
+        </ng-container>
+    
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="lieu">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> lieu </th>
+          <td mat-cell *matCellDef="let row"> {{row.lieu}} </td>
+        </ng-container>
+
+       
+
+        <ng-container matColumnDef="idDetailM">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> idDetailM </th>
+          <td mat-cell *matCellDef="let row"> {{row.idDetailM}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="idDemandeur">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> IdDemandeur </th>
+          <td mat-cell *matCellDef="let row"> {{row.idDemandeur}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="accent"(click)="voirT(row)">
+              <mat-icon>visibility</mat-icon>
+           </button>&nbsp;
+            <button mat-icon-button color="primary"(click)="openDialog(row)">
+              <mat-icon>check_circle_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">Pas de résultat pour "{{input.value}}"</td>
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+    
+  </div></div>
+
+</mat-sidenav-content>
+</mat-sidenav-container>

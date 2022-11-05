@@ -1,0 +1,103 @@
+mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+ ul li {
+      list-style: none;
+    }
+  
+  button {
+    outline: none;
+    border: 0;
+    background: transparent;
+  }
+  .user {
+    font-size: 14px;
+  }
+  mat-toolbar {
+    background-color: #f0f0f0;
+  }
+  .user-image {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px; }
+
+   .icon {
+      height: 18px;
+      font-size: 16px;
+    }
+
+    .profile-image-toolbar{
+      border-radius: 100%;
+      margin-right: 8px;
+  }
+ 
+  
+  
+    .mat-menu-content {
+      width: 160px;
+    }
+  mat-sidenav{
+      width: 200px;
+  }
+  
+.example-spacer {
+      flex: 1 1 auto;
+    }
+
+
+
+
+
+
+    .logo{
+      position:relative;
+      padding:1rem 2em;
+      z-index:4;
+    }
+    .logo a.logo-mini{
+      opacity: 1;
+      float: left;
+      width: 80px;
+      text-align:center;
+      margin-left:10px;
+      margin-right:12px;
+    
+    }
+    .logo a.logo-normal{
+      display: block;
+      opacity: 1;
+      -webkit-transform: translate3d(0px,0,0);
+      -moz-transform: translate3d(0px,0,0);
+      -o-transform:  translate3d(0px,0,0);
+      -ms-transform:  translate3d(0px,0,0);
+      transform: translate3d(0px,0,0);
+    }
+    
+    .logo:after{
+      content:'';
+     position: absolute;
+     bottom: 0;
+     right: 40px;
+     height: 10px;
+     width: calc(100%-30px);
+     background: rgba(255,255,255,0.5);
+    }
+    
+    .logo .simple-text{
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      display: block;
+      white-space: nowrap;
+      color:#ffffff;
+      text-decoration: none;
+      font-weight: 400;
+      line-height: 30px;
+      overflow: hidden;
+    }
+    .logo-img img{
+      width:150px;
+      height:50px;
+    }

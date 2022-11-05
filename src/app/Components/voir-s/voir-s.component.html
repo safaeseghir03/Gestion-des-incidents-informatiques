@@ -1,0 +1,16 @@
+<h1 mat-dialog-title> Solution du problème {{idPro}}</h1>
+
+<h2>Problème :</h2>
+<p>{{probleme}}</p>
+
+<h2>Solution :</h2>
+<p>{{solution}}</p>
+
+<h2>Les étapes :</h2>
+<p>{{etapes}}</p>
+
+
+<div *ngIf="pc!='null'">
+   
+<a  href={{pc}} tabindex="-1"><strong>plus d'information</strong></a>
+</div>

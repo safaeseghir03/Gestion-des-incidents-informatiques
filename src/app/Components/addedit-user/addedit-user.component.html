@@ -1,0 +1,97 @@
+<h1 mat-dialog-title> Ajouter un  nouveau utilisateur </h1>
+<form [formGroup]="userForm">
+<table>
+
+<tr>
+    <td>
+        <mat-form-field appearance="standard">
+            <mat-label>Entrez le nom </mat-label>
+            <input formControlName="NomDemandeur" matInput placeholder="Nom">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-error *ngIf="NomDemandeur.errors?.['required']">
+              Obligatoire
+            </mat-error>
+          </mat-form-field></td>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrez le prenom</mat-label>
+        <input formControlName="PrenomDemandeur" matInput placeholder="Prenom">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error *ngIf="PrenomDemandeur.errors?.['required']">
+          Obligatoire
+        </mat-error>
+      </mat-form-field></td>
+     
+</tr>
+<tr>
+    <td>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Entez l'email</mat-label>
+              <input formControlName="emailDemandeur" matInput placeholder="pat@example.com" [formControl]="email" required email>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrer le tele</mat-label>
+        <input formControlName="telDemandeur" matInput placeholder="Tele">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="telDemandeur.errors?.['required']">
+          Obligatoire
+        </mat-error>
+      </mat-form-field></td>
+     
+</tr>
+<tr>
+    <td >
+        <mat-form-field appearance="fill">
+            <mat-label>Departement</mat-label>
+            <mat-select #departementValue  (selectionChange)="changeDepartement($event.value)">
+                <div *ngFor="let item of Departements$|async"  >
+                    <div *ngIf="item.etat==='Activé'">
+              <mat-option [value]="item.idDept">{{item.nomDept}}</mat-option>
+          </div>  </div> </mat-select>
+          
+          </mat-form-field>
+    </td>
+  <td>
+    <mat-form-field appearance="fill">
+        <mat-label>Service</mat-label>
+        <mat-select formControlName="serviceId" >
+            <div *ngFor="let item of servicesList$|async" >
+               <div *ngIf="item.idDept===aide">
+          <mat-option [value]="item.serviceId">{{item.nomService}}</mat-option>
+      </div>  </div> </mat-select>
+      <mat-error *ngIf="serviceId.errors?.['required']">
+        Obligatoire
+      </mat-error>
+      </mat-form-field></td>
+     
+</tr>
+<tr>
+    <td>
+        <mat-form-field appearance="standard">
+            <mat-label>Entrez le login </mat-label>
+            <input formControlName="login" matInput placeholder="login">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-error *ngIf="login.errors?.['required']">
+              Obligatoire
+            </mat-error>
+          </mat-form-field></td>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrez le mot de passe</mat-label>
+        <input  formControlName="password" matInput placeholder="Mot de passe">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error *ngIf="password.errors?.['required']">
+          Obligatoire
+        </mat-error>
+      </mat-form-field></td>
+     
+</tr>
+</table></form><br><br>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addUser()" [disabled]="!userForm.valid" >{{actionBtn}}</button>
+</div>

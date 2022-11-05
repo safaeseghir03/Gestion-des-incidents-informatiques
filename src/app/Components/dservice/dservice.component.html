@@ -1,0 +1,173 @@
+
+<!-- <div class="container">
+  
+<button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="modalAdd()">
+  ajouter service
+  </button>
+
+
+<button type="button" class="btn btn-secondary float-end m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+   voir les departements
+  </button>
+  
+<table class="table table-striped">
+    <thead>
+        <th>id</th>
+        <th>Nom service</th>
+        
+        <th>id Departement</th>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of servicesList$|async">
+            <td>{{item.serviceId}}</td>
+            <td>{{item.nomService}}</td>
+            <td>{{DepartementMap.get(item.idDept)}}</td>
+          
+            <td>
+                <button class="btn btn-outline-primary" (click)="EditService(item)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                      </svg>
+                </button>
+            </td>
+        
+        </tr>
+    </tbody>
+</table>
+<div class="alert alert-success" role="alert" id="add-success">
+    Le service a été bien ajouté
+  </div>
+  <div class="alert alert-success" role="alert" id="update-success">
+    Le service a été bien modifié
+</div>
+
+
+  Departement list Modal
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p *ngFor="let departement of Departements$|async">{{departement.idDept}} - {{departement.nomDept}}</p>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+
+  
+ add service Modal
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{Modaltitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalClose()" id="add-edit-modal-close">
+
+          </button>
+        </div>
+        <div class="modal-body">
+       <app-add-editservice [service]="service" *ngIf="activeAddEdit"></app-add-editservice>
+        </div>
+        
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+  <div class="container-fluid">
+ 
+    <app-navbar [inputSidenav]="sidenave"></app-navbar>
+   <mat-sidenav-container>
+     <mat-sidenav #sidenave mode="side">
+      <app-sidenav></app-sidenav> 
+     </mat-sidenav>
+     <mat-sidenav-content>
+       
+  
+  <app-barre-tick></app-barre-tick>
+  <button id="add" mat-raised-button  color="warn" class="mt-2" (click)="openDialog()">+ un nouveau service</button>
+  
+  
+  <div class="container"><div style="margin-top: 30px;">
+      <mat-form-field class="rech" appearance="standard">
+        <mat-label>Recherche</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="serviceId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+            <td mat-cell *matCellDef="let row"> {{row.serviceId}} </td>
+          </ng-container>
+      
+          <!-- Progress Column -->
+          <ng-container matColumnDef="nomService">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom service</th>
+            <td mat-cell *matCellDef="let row"> {{row.nomService}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="idDept">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> id departement</th>
+            <td mat-cell *matCellDef="let row"> {{row.idDept}} </td>
+          </ng-container>
+      
+         
+  
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="editService(row)"color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <!-- <button  mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+              </button> -->
+            </td>
+          </ng-container>
+  
+  
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">Pas de résultat pour "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+      
+    </div></div>
+  
+    
+  </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
+
+
+
+

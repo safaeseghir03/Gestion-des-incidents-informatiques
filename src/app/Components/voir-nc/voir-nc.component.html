@@ -1,0 +1,65 @@
+<!-- <div class="ticket">
+    <div class="ticket-content-wrapper">
+<mat-card class="example-card">
+    <mat-card-title>{{idTicket}}</mat-card-title> 
+    <mat-card-title>{{titre}}</mat-card-title>
+    <mat-card-subtitle>{{lieu}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{dateHeureCreation}}</p>
+      <p>{{idDetailM}}</p>
+      <p>{{description}}</p>
+    </mat-card-content>
+   
+ 
+ 
+ </mat-card>
+ </div>
+  </div> -->
+
+  <div class="courses-container">
+	<div class="course">
+		<div class="course-preview">
+			<h6>id:{{idTicket}}</h6><br>	<br>	
+		<h1>{{type}}</h1>
+        
+        <br><br><br><br>
+       
+		
+		</div>
+		<div class="course-info">
+			<div class="progress-container">
+				<div class="progress"></div>
+				<span class="progress-text">
+					{{statue}}
+				</span>
+			</div><br>
+			
+			<h2>{{titre}}</h2>
+
+      <h3>{{statue}}</h3>
+      <div *ngIf="statue=='à planifier'"> 
+        <p><strong>à plannifier de : </strong> {{plannifierDe}} &nbsp;<strong>à : </strong>{{plannifierDe}}</p>
+       
+      </div>
+      <div *ngFor="let item of detailsList$|async"  >
+        <div *ngIf="item.idDetailM==idDetailM">
+            <h4 > <i class="bi bi-pc-display-horizontal"></i> &nbsp; &nbsp;{{item.nomDetailM}}</h4>
+    </div>  
+         </div>
+            <h4>{{description}}</h4>
+            <h4><strong>Priorité:</strong>&nbsp;{{priorite}}</h4>
+            <div *ngFor="let item of demandeurList$|async"  >
+              <div *ngIf="item.idDemandeur==IdDemandeur">
+                  <h4 ><strong>Demandeur:</strong> {{item.nomDemandeur}} {{item.prenomDemandeur}}</h4>
+          </div>  
+               </div>
+          
+  
+             <h4><i class="bi bi-geo-alt-fill"></i>{{lieu}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-clock-fill"></i><strong>création:</strong> {{dateHeureCreation}}</h4>
+            
+           
+
+
+		</div>
+	</div>
+</div>

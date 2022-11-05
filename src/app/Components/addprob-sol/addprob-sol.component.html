@@ -1,0 +1,35 @@
+<h1 mat-dialog-title> Ajouter une solution d'un problème  </h1>
+<form [formGroup]="ProbForm">
+
+        
+      <mat-form-field class="example-full-width" appearance="fill" style="width: 300px;">
+        <mat-label>Problème:</mat-label>
+        <textarea style="width: 300px;" rows="5" matInput formControlName="probleme"></textarea>
+    </mat-form-field>
+    &nbsp;&nbsp;
+      <mat-form-field class="example-full-width" appearance="fill" style="width: 300px;">
+        <mat-label> Solution  :</mat-label>
+        <textarea style="width: 300px;" rows="5" matInput formControlName="solution"></textarea>
+    </mat-form-field>
+<br>
+   <mat-form-field class="example-full-width" appearance="fill" style="width: 300px;">
+            <mat-label> Les étapes :</mat-label>
+            <textarea style="width: 300px;" rows="5" matInput formControlName="etapes"></textarea>
+        </mat-form-field>
+   
+        &nbsp;&nbsp;
+         
+        <div *ngIf="percentages | async as pct">
+          <div *ngIf="pct == 100" class="alert alert-success">votre fichier est ajouté avec succés</div>
+        <progress id="js-progressbar" [value]="pct" max="100"></progress>
+      </div>
+
+</form><br><br>
+<div mat-dialog-action [align]="'end'">
+  <button mat-mini-fab color="primary" (click)="inputField.click()">
+    <mat-icon>attachment</mat-icon>
+</button> &nbsp;&nbsp;
+<input #inputField  type="file"  hidden (change)="uploadImage($event)">
+    <button mat-raised-button color="warn" mat-dialog-close>Fermer</button> &nbsp;&nbsp;
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProb()" [disabled]="!ProbForm.valid"  >{{actionBtn}}</button>
+</div>

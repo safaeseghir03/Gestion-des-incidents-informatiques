@@ -1,0 +1,21 @@
+<div class="container-fluid">
+ 
+  <app-navbar [inputSidenav]="sidenave"></app-navbar>
+ <mat-sidenav-container>
+   <mat-sidenav #sidenave mode="side">
+    <app-sidenav></app-sidenav> 
+   </mat-sidenav>
+   <mat-sidenav-content>
+<app-barre-tick></app-barre-tick>
+
+
+
+ <mat-tab-group mat-align-tabs="center" >
+  <mat-tab label="Tickets Acceptés"><app-accepte-t></app-accepte-t></mat-tab>
+  <mat-tab label="Tickets à planifier"><app-planifier-t></app-planifier-t></mat-tab>
+  <mat-tab label="Tickets Refusé"><app-refuse-t></app-refuse-t></mat-tab>
+  <mat-tab label="Tickets Sans Reponse"><app-sans-rt></app-sans-rt></mat-tab>
+
+</mat-tab-group>
+</mat-sidenav-content>
+</mat-sidenav-container>

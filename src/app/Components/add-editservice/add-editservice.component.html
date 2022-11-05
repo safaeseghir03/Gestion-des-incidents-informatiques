@@ -1,0 +1,58 @@
+<!-- <form>
+    <div class="mb-3">
+        <label for="idDept" class="form-label">Departement</label>
+          
+        <input type="text" class="form-control" name="idDept" [(ngModel)]="idDept" *ngIf=" service.serviceId!=0"disabled>
+
+        <select class="form-control" name="idDept" id="departementId" 
+        [(ngModel)]="idDept" *ngIf="serviceId==0">
+
+        <option *ngFor="let type of Departements$|async" [value]="type.idDept">{{type.nomDept}}</option>
+    </select></div>
+
+    <div class="mb-3">
+        <label for="nomService" class="form-control">Nom service</label>
+        <input type="text" class="form-control" placeholder="Nom service" [(ngModel)]="nomService" name="nomService">
+  
+    </div>
+    <button (click)="AddService()" *ngIf="service.serviceId==0" class="btn btn-primary">
+      Ajouter
+    </button>
+    <button (click)="EditService()" *ngIf="service.serviceId!=0 " class="btn btn-primary">
+     Modifier
+    </button>
+</form> -->
+
+<h1 mat-dialog-title> Ajouter un  service </h1>
+<form [formGroup]="serviceForm">
+
+<table>
+    <tr>
+        
+      
+    
+            <td>
+                <mat-form-field appearance="standard">
+                    <mat-label>service</mat-label>
+                    <input formControlName="nomService" matInput placeholder="Nom Service">
+                </mat-form-field>
+            </td>
+            <td >
+                <mat-form-field appearance="fill">
+                    <mat-label>Departement</mat-label>
+                    <mat-select #departementValue formControlName="idDept"  >
+                        <div *ngFor="let item of Departements$|async"  >
+                            
+                      <mat-option [value]="item.idDept">{{item.nomDept}}</mat-option>
+                  </div>  </mat-select>
+                  
+                  </mat-form-field>
+            </td>
+           
+      </tr>
+    </table></form><br><br>
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="AddService()" [disabled]="!serviceForm.valid" >{{actionBtn}}</button>
+    </div>
+    

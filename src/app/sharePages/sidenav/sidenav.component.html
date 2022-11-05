@@ -1,0 +1,30 @@
+<div class="sidenav">
+    <div class="logo">
+    <a href="/" class="simple-text logo-mini">
+    <div class="logo-img">
+    <img src="./assets/images/taqa-morocco-logo.png"/>
+    </div>
+    </a>
+    
+     
+    
+    </div><br><br>
+    <mat-nav-list>
+      <a *ngIf="role=='Gestionnaire des tickets'" class="act" mat-list-item (click)=" goToTicket()"><i class="bi bi-ticket-detailed-fill"></i> &nbsp;  Tickets</a>
+      <a  *ngIf="role=='Gestionnaire des tickets'" class="act" mat-list-item (click)="goToUser()"><i class="bi bi-people-fill"></i> &nbsp;  Utilisateurs</a>
+      <a  *ngIf="role=='Gestionnaire des tickets'" class="act" mat-list-item (click)="goToEquipe()"><i class="bi bi-people"></i> &nbsp; Equipe IT</a>
+      <a  *ngIf="role=='Gestionnaire des tickets'"class="act" mat-list-item (click)="goToDeprtement()"><i class="bi bi-diagram-3-fill"></i>&nbsp;Departements</a>
+      <a  *ngIf="role=='Gestionnaire des tickets'" class="act" mat-list-item (click)="goToService()"><i class="bi bi-square-fill"></i>&nbsp;Services</a>
+      <a  *ngIf="role=='Gestionnaire des tickets'" class="act" mat-list-item (click)="goTomL()"><i class="bi bi-pc-display-horizontal"></i>&nbsp; Logiciels/Materiels</a>
+      
+      <a  *ngIf="role=='user'" class="act" mat-list-item (click)="goToTicketuser()"><i class="bi bi-ticket-detailed-fill"></i>&nbsp; Mes Tickets</a>
+      <a  *ngIf="role=='user'" class="act" mat-list-item (click)="goToclo()"><i class="bi bi-x-circle-fill"></i>&nbsp; Tickets Cloturés</a>
+      <a  *ngIf="role=='user'" class="act" mat-list-item (click)="goTosolUser()"><i class="bi bi-search"></i>&nbsp; Base des connaissances</a>
+      
+      <a  *ngIf="role=='Technicien'" class="act" mat-list-item (click)="goToTicketTech()"><i class="bi bi-ticket-detailed-fill"></i>&nbsp; Mes Tickets</a>
+      <a  *ngIf="role=='Technicien'" class="act" mat-list-item (click)="goProbSol()"><i class="bi bi-clipboard-data"></i>&nbsp; Base des connaissances</a>
+      
+      <a  *ngIf="role=='Responsable SI'" class="act" mat-list-item (click)="goToTicketRes()"><i class="bi bi-ticket-detailed-fill"></i>&nbsp; Mes Tickets</a>
+
+    </mat-nav-list> 
+    </div>

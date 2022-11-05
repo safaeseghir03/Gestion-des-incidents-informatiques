@@ -1,0 +1,101 @@
+<h1 mat-dialog-title> Ajouter un  nouveau membre </h1>
+<form [formGroup]="equipeITForm">
+<table>
+
+<tr>
+    <td>
+        <mat-form-field appearance="standard">
+            <mat-label>Entrez le nom </mat-label>
+            <input formControlName="NomEq" matInput placeholder="Nom">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-error *ngIf="NomEq.hasError('required')">
+              Obligatoire
+            </mat-error>
+          </mat-form-field></td>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrez le prenom</mat-label>
+        <input formControlName="PrenomEq" matInput placeholder="Prenom">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error *ngIf="PrenomEq.hasError('required')">
+          Obligatoire
+        </mat-error>
+      </mat-form-field></td>
+     
+</tr>
+<tr>
+    <td>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Entez l'email</mat-label>
+              <input formControlName="Email" matInput placeholder="pat@example.com" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrer le tele</mat-label>
+        <input formControlName="Tel" matInput placeholder="Tele">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="Tel.errors?.['required']">
+          Obligatoire
+        </mat-error>
+       
+        <mat-error *ngIf="Tel.errors?.['pattern']">
+          entrer un numéro de téléphone valide <strong>required</strong>
+        </mat-error>
+      </mat-form-field></td>
+    
+     
+</tr>
+
+<tr>
+    <td>
+        <mat-form-field appearance="standard">
+            <mat-label>Entrez le login </mat-label>
+            <input formControlName="username" matInput placeholder="login">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+           
+          </mat-form-field></td>
+  <td>
+    <mat-form-field appearance="standard">
+        <mat-label>Entrez le mot de passe</mat-label>
+        <input  formControlName="Mp" matInput placeholder="Mot de passe">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        
+      </mat-form-field></td>
+     
+</tr>
+<tr>
+    
+    <td>
+      <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="typeEq" >
+              
+            <mat-option value="Gestionnaire des tickets">Gestionnaire des tickets</mat-option>
+            <mat-option value="Technicien">Technicien</mat-option>
+            <mat-option value="Responsable SI">Responsable SI</mat-option>
+         </mat-select>
+         
+        </mat-form-field></td>
+
+        <td>
+            <mat-form-field appearance="fill">
+                <mat-label>Etat</mat-label>
+                <mat-select formControlName="etatEq" >
+                    
+                  <mat-option value="Activé">Activé</mat-option>
+                  <mat-option value="Désactivé">Désactivé</mat-option>
+                 
+               </mat-select>
+               
+              </mat-form-field></td>
+             
+       
+  </tr>
+</table></form><br><br>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addMembreIT()" [disabled]="!equipeITForm.valid" >{{actionBtn}}</button>
+</div>

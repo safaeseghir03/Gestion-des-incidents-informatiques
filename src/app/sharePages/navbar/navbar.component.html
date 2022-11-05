@@ -1,0 +1,58 @@
+<!-- <mat-toolbar>
+    <mat-toolbar-row>
+    <button mat-icon-button (click)="inputSidenav.toggle()"   >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="logo-img">
+      <img src="./assets/images/taqa-morocco-logo.png"/>
+      </div>
+    <span class="example-spacer"></span>
+    <button class="hov" id="impo4" mat-button [matMenuTriggerFor]="userMenu">
+        <img class="profile-image-toolbar" width="30" height="30" [src]="'assets/img/imageplch.jpg'">
+{{Nom}} {{Prenom}}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+              <mat-menu #userMenu="matMenu">
+                <button mat-menu-item  >Mon profile</button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Déconnexion
+                  </button>
+                
+              </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar> -->
+  
+  <mat-toolbar >
+    <mat-toolbar-row>
+      <button  (click)="inputSidenav.toggle()" mat-icon-button >
+        <mat-icon >menu</mat-icon>
+      </button>
+      <div class="logo-img">
+        <img src="./assets/images/taqa-morocco-logo.png"/>
+        </div>
+    <span class="example-spacer"></span>
+    <button  *ngIf="role=='user'" mat-raised-button
+    matBadge={{cptC}}  matBadgePosition="after" matBadgeColor="warn"(click)=" goToUseClo()">
+    <mat-icon >done_outline</mat-icon>
+    </button>
+   
+    <span class="example-spacer"></span>
+    
+    <button class="hov" id="impo4" mat-button [matMenuTriggerFor]="userMenu">
+      <img class="profile-image-toolbar" width="30" height="30" [src]="PhotoURL ?? 'assets/images/imageplch.jpg'">
+{{Nom}} {{Prenom}}
+      <mat-icon>expand_more</mat-icon>
+    </button>
+            <mat-menu #userMenu="matMenu">
+              <button mat-menu-item (click)="goToProfile()" >Mon profile 	<mat-icon>account_circle</mat-icon></button>
+              <button mat-menu-item (click)="logout()">
+                  <mat-icon>exit_to_app</mat-icon>
+                  Déconnexion
+                </button>
+              
+            </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+  
+  
